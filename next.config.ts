@@ -1,11 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	// Ensure Turbopack (and Vercel) resolves the project root correctly when
-	// multiple lockfiles or workspace layouts exist.
-	turbopack: {
-		root: "./",
-	},
+  output: 'standalone',
+  distDir: '.next',
+  turbopack: {
+    root: "./",
+  },
+  // Ensure trailing slashes are handled consistently
+  trailingSlash: false,
+  // Ensure we're not using experimental features that might cause issues
+  experimental: {
+    serverActions: false,
+  }
 };
 
 export default nextConfig;
